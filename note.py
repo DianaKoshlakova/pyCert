@@ -9,14 +9,14 @@ def save_notes(notes):
 
         for note in notes:
             writer.writerow([note['id'], note['title'], note['body'], note['date_time']])
-    easygui.msgbox('Notes saved successfully', title='Success')
+    easygui.msgbox('Notes saved', title='Success')
 
 def read_notes():
     notes = []
     try:
         with open('notes.csv', 'r') as file:
             reader = csv.reader(file, delimiter=';')
-            next(reader)  # Skip header
+            next(reader)
             for row in reader:
                 note = {'id': row[0], 'title': row[1], 'body': row[2], 'date_time': row[3]}
                 notes.append(note)
